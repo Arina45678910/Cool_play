@@ -1,7 +1,62 @@
-#field td {
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Libre Bodoni', serif;
+    color: blue;
+}
+
+.winner {
+    width: 300px;
+    height: 150px;
+    color: cornflowerblue;
+    background-color: rgb(220, 220, 255);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+
+}
+
+.winner:hover {
+    background-color: rgb(195, 195, 243);
+    ;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
     border: 1px solid black;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     text-align: center;
     cursor: pointer;
+}
+
+tr:first-child td {
+    border-top: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr td:first-child {
+    border-left: none;
+}
+
+tr td:last-child {
+    border-right: none;
 }
