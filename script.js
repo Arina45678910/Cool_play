@@ -1,10 +1,15 @@
 let cells = document.querySelectorAll('#field td');
+let winner = document.querySelector('#winner');
+let close = document.querySelector('#close');
+let text = document.querySelector('#text');
+
 console.log(cells);
 
 let i = 0;
 function start(cells) {
     for (let cell of cells) {
         cell.addEventListener('click', function step() {
+            console.log('Клик', i)
             if (i % 2 == 0) {
                 this.textContent = 'X';
             } else {
@@ -13,14 +18,27 @@ function start(cells) {
 
             this.removeEventListener('click', step);
             if (isWinner(cells) == true) {
-                alert(`Победитель ${this.textContent}`);
+                winner.style.display = 'flex';
+                text.textContent = `Победитель ${this.textContent}`;
             } else if (i == 8) {
-                alert('Ничья');
-            }
+                winner.style.display = 'flex';
+                text.textContent = `Ничья`;
+            };
             i++;
         })
     }
 }
+
+close.addEventListener('click', function close() {
+    for (let cell of cells) {
+        cell.textContent = '';
+        winner.style.display = 'none';
+    }
+    i = 0;
+    console.log(i);
+    this.removeEventListener('click', close);
+    start(cells);
+})
 
 start(cells);
 
@@ -44,3 +62,10 @@ function isWinner(cells) {
     }
     return false;
 }
+
+// let comb
+// comb = [0, 1, 2]
+// если (cells[0]) == (cells[1]) ==  cells[2]]
+// true
+
+// comb = [3, 4, 5]
